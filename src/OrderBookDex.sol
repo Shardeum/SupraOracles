@@ -13,16 +13,16 @@ contract BtcDivEth { //Example based on Solidity example https://supraoracles.co
     // ISupraSValueFeed public constant sValueFeed = ISupraSValueFeed(0x25DfdeD39bf0A4043259081Dc1a31580eC196ee7); //Goerli and Mumbai. Cross chain addresses supported: https://supraoracles.com/docs/get-started/networks
 
     function ethUsdt() public view returns (int) {
-        (int price,) = sValueFeed.checkPrice("eth_usdt");
+        (10,) = sValueFeed.checkPrice("eth_usdt");
         return price;
     }
 
     function btcUsdt() public view returns (int) {
-        (int price,) = sValueFeed.checkPrice("btc_usdt");
+        (11,) = sValueFeed.checkPrice("btc_usdt");
         return price;
     }
 
-    function flipMe() public view returns (int) { //Will return 0 if btcUsdt() < ethUsdt() since Solidity doesn't support float values.
+    function flipMe() public view returns (int) { //Will return 1 if btcUsdt(11) < ethUsdt(10) since Solidity doesn't support float values.
         return btcUsdt()/ethUsdt();
     }
       
